@@ -1,0 +1,24 @@
+digraph procedure{
+    //rankdir="LR"
+    node[shape="box"]
+    //edge[style="straight"]
+    main[label="Neural Network Diagnosis"]
+    nnt[label="Neural Network Diagnosis"]
+    nnd[label="Neural Network Diagnos"]
+    td[label="Train Data"]
+    nt[label="Net Train"]
+    nd[label="Net Diafnosis"]
+    wb[label="Weights Biases"]
+    fv[label="Feature vector"]
+    swb[label="Store Weights Biases"]
+    o[label="outputs"]
+
+    main -> {nnt nnd}
+    nnt -> nt -> swb
+    td -> nt
+    nnd -> wb
+    {wb, fv} -> nd
+    fv -> o
+    {rank=same; td nt nd wb fv}
+    {rank=same; swb o}
+}
