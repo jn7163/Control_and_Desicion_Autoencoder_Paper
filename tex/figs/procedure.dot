@@ -1,16 +1,17 @@
 digraph procedure{
     //rankdir="LR"
     node[shape="box"]
+    splines=ortho
     //edge[style="straight"]
     main[label="Neural Network Diagnosis"]
-    nnt[label="Neural Network Diagnosis"]
-    nnd[label="Neural Network Diagnos"]
-    td[label="Train Data"]
-    nt[label="Net Train"]
-    nd[label="Net Diafnosis"]
-    wb[label="Weights Biases"]
-    fv[label="Feature vector"]
-    swb[label="Store Weights Biases"]
+    nnt[label="Neural \nNetwork \nDiagnosis"]
+    nnd[label="Neural \nNetwork \nDiagnosis"]
+    td[label="Train \nData"]
+    nt[label="Net \nTrain"]
+    nd[label="Net \nDiafnosis"]
+    wb[label="Weights \nBiases"]
+    fv[label="Feature \nvector"]
+    swb[label="Store \nWeights \nBiases"]
     o[label="outputs"]
 
     main -> {nnt nnd}

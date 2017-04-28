@@ -1,0 +1,26 @@
+digraph autoencoder{
+    node[style="solid", shape=circle, label=""]
+    splines=line
+    nodesep=.1
+    rankdir="LR"
+
+    subgraph cluster_encoder{
+        color=white;
+        x1, x2, x3, x4, x5, x6, x7
+        label = "编码器"
+    }
+
+    subgraph cluster_hidden{
+        color=white;
+        h1, h2, h3, h4, h5
+        label="隐藏层"
+    }
+
+    subgraph cluster_decoder{
+        color=white;
+        y1, y2, y3, y4, y5, y6, y7
+        label="解码器"
+}
+
+    {x1, x2, x3, x4, x5, x6, x7} -> {h1, h2, h3, h4, h5} -> {y1, y2, y3, y4, y5, y6, y7}
+}
