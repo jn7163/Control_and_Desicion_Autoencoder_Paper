@@ -1,3 +1,14 @@
+% !Mode:: "TeX:UTF-8"
+
+%%%中文版式与英文版式通过参数设置
+\documentclass{ctacn}%英文版式
+
+%可以选择使用times字体
+\usepackage{newtxtext}
+\usepackage{hhline}
+\usepackage{ctex}
+
+\begin{document}
 
 \textbf{基于加入DropOut的降噪自编码的磨矿系统故障诊断}
 
@@ -279,13 +290,4 @@ softmax分类器网络，将前面训练好的网络保存下来的权重和阈�
 本文提出的AutoencoderSoftmax深度学习网络能够很好的在繁冗的特征向量数据集中提取出有效特征并将输入数据的维数进行无损压缩这样大大降低了网络的运算量。在非均衡分类问题中，传统的BP神经网络对于故障的辨识效果并不好，而且收敛速度较慢、容易陷入局部极小值，虽然采用了``成批处理''的方法收敛速度加快，但是辨识效果没有明显提高。相反，AutoencoderSoftmax深度学习网络尤其针对非传统分类问题，其收敛速度和辨识效果都要好于传统的BP网络。AutoencoderSoftmax深度学习网络在本文故障诊断问题中对于预测有故障的正确率为
 \%，预测无故障的正确率为
 \%。这种方法将为今后的非传统分类问题提供一个理论依据，并将在深度学习实现故障辨识领域产生深远意义。
-% !Mode:: "TeX:UTF-8"
-
-%%%中文版式与英文版式通过参数设置
-\documentclass{ctacn}%英文版式
-
-%可以选择使用times字体
-\usepackage{newtxtext}
-\usepackage{hhline}
-\usepackage{ctex}
-
+\end{document}
