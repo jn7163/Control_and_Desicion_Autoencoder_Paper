@@ -672,8 +672,8 @@ a_{n1}& a_{n2}&\dots &a_{nn}
 \end{thebibliography}\vspace{-20pt}
 
 
-\bibliographystyle{bib/gbt7714-2005}
-~\\\\\\测试\TeX \LaTeX \LaTeXe \cite{srivastava2014dropout, srivastava214dropout, srivastava2014ropout}\cite{srivastava2014ropout}\cite{srivastava214dropout}
+\bibliographystyle{unsrt}
+~\\\\\\测试\cite{srivastava2014dropout, srivastava214dropout, srivastava2014ropout}\cite{srivastava2014ropout}\cite{srivastava214dropout}
 \bibliography{bib/test.bib}
 
 
