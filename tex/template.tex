@@ -239,9 +239,9 @@ S_3=\frac{TN}{TN+FN}
 		\bottomrule
 \end{tabular}\end{center}
 
-通过实验结果可以计算出不作任何特征变换的BP神经网络，神经元网络激活函数使用Sigmoid函数，节点大小为24-100-8，,对于预测有故障的正确率为
+通过实验结果可以计算出不作任何特征变换的BP神经网络，神经元网络激活函数使用Sigmoid函数，节点大小为$24\rightarrow100\rightarrow8$，,对于预测有故障的正确率为
 46.7\%，无故障的正确率为69.6
-\%，错误率为26\%。可以看出，如果对于输入的特征向理想不作任何特征变化就输入到神经网络中，网络在有无故障的辨识正确率方面表现都比较差，并且错误率较高。这也进一步说明传统BP神经网络不适用高维输入的非均衡分类问题。
+\%，错误率为38.7\%。可以看出，如果对于输入的特征向理想不作任何特征变化就输入到神经网络中，网络在有无故障的辨识正确率方面表现都比较差，并且错误率较高。这也进一步说明传统BP神经网络不适用高维输入的非均衡分类问题。
 
 \section{原始自动编码器}
 
@@ -260,13 +260,13 @@ softmax分类器网络。该网络的隐藏层的输出值正好就是类似池�
 \end{center}
 
 网络训练时分为两部分，首先对自动编码网络训练，将$1000\times24$维的训练样本集全部输入，按照BP网络的梯度下降算法进行训练使输出尽可能的与输入均方差最小。Autoencoder网络训练完，将最终的权重和阈值保存下来。接下来就是训练Autoencoder
-softmax分类器网络，将前面训练好的网络保存下来的权重和阈值来初始化新构建的神经网络的权值和阈值，重新进行训练，此时训练的算法为L-BFGS，目标函数为使得``交叉熵''最小。交叉熵产生于信息论里面的信息压缩编码技术，是用来衡量我们的预测用于描述真相的低效性，使交叉熵越小也就是低效性越低即准确率越高。
+softmax分类器网络，将前面训练好的网络保存下来的权重和阈值来初始化新构建的神经网络的权值和阈值，重新进行训练。自编码网络结构为$24\rightarrow150\rightarrow24\rightarrow150\rightarrow8$，激活函数为RELU，此时训练的算法为L-BFGS，学习率为0.01，目标函数为使得“交叉熵”最小。交叉熵产生于信息论里面的信息压缩编码技术，是用来衡量我们的预测用于描述真相的低效性，使交叉熵越小也就是低效性越低即准确率越高。
 
 \subsection{对比AutoencoderBP和Autoencodersoftmax辨识效果}
 
-在对BP网络和AutoencoderSoftmax深度学习网络进行实验时，选择其中900组数据作为训练样本集，余下的100组数据作为测试集来进行交叉验证。
+在对BP网络和AutoencoderSoftmax深度学习网络进行实验时，选择其中909组数据作为训练样本集，余下的115组数据作为测试集来进行交叉验证。
 
-基于3.3提出几种分类评价标准，本文对AutoencoderBP神经网络和AutoencoderSoftmax深度学习网络进行对比测试实验。
+基于2.3提出几种分类评价标准，本文对AutoencoderBP神经网络和AutoencoderSoftmax深度学习网络进行对比测试实验。
 
 在24维特征向量输入网络之前，利用Autoencoder自编码网络对其进行特征提取。自编码网络也可以看作一种神经网络，其目标函数就是使输出尽可能的与输入相等，这样既可以在隐含层实现无损压缩。为了验证自编码网络的性能我们选取其中八维特征观察还原效果如图4所示。
 
@@ -302,7 +302,7 @@ softmax分类器网络，将前面训练好的网络保存下来的权重和阈�
 		\bottomrule
 \end{tabular}\end{center}
 
-由表4可以计算出AutoencoderBP网络对于有故障预测的准确率为66.7\%，而对于无故障预测的正确率为78.6\%，错误率也下降为15.0\%。可以看出，相较传统的BP神经网络其在有无故障预测的正确率方面有了一定提高，同时错误率也有所下降，特征经过自编码网络编码后，有效特征被提取出来，提高了传统BP网络的辨识能力。
+由表4可以计算出AutoencoderBP网络对于有故障预测的准确率为66.7\%，而对于无故障预测的正确率为78.6\%，错误率也下降为26.1\%。可以看出，相较传统的BP神经网络其在有无故障预测的正确率方面有了一定提高，同时错误率也有所下降，特征经过自编码网络编码后，有效特征被提取出来，提高了传统BP网络的辨识能力。
 
 \paragraph{AutoencoderSoftmax深度学习网络实验结果}
 
@@ -314,11 +314,11 @@ softmax分类器网络，将前面训练好的网络保存下来的权重和阈�
 		\cmidrule(lr){3-4}
 		&&有故障&无故障\\\hline
 		\multirow{2}{*}[-2pt]{真实结果}&有故障&37&8\\
-		&无故障&8&55\\
+		&无故障&8&62\\
 		\bottomrule
 \end{tabular}\end{center}
 
-利用表5中的数据带入上面的公式可以得到AutoencoderSoftmax深度学习网络预测有故障的正确率为82.2\%，预测无故障的正确率为90.3\%，而错误率降低为8\%。
+利用表5中的数据带入上面的公式可以得到AutoencoderSoftmax深度学习网络预测有故障的正确率为82.2\%，预测无故障的正确率为88.5\%，而错误率降低为13.9\%。
 
 对以上三种算法进行对比分析，结果如图6所示。
 
@@ -330,6 +330,22 @@ softmax分类器网络，将前面训练好的网络保存下来的权重和阈�
 
 由图6可知，AutoencoderSoftmax深度学习网络在预测有无故障正确率方面明显优于前面两种网络，此外还大大降低了错误率，由此可以看出该深度学习网络对分均衡分类问题有着良好的分类效果。
 
+\section{引入DropOut与降噪自编码}
+从图4也能看出，传统自动编码器对数据的恢复效果一般，而且使用测试集测试自动编码器编码的时候，编码效果明显弱于训练集。这是因为自动编码器对噪声数据有着一定的过拟合。为了解决这个困难，我们引入DropOut与降噪自编码技术。
+
+\subsection{DropOut}
+DropOut是一种通用的训练神经网络并能明显降低过拟合的方法。在训练过程中，将神经网络中的神经元按照一定概率$P(d)$丢弃，训练这些稀疏的模型，并去掉全职惩罚项，将其替换为限制权值的上限。因为噪声通常表现为高频干扰，用这种方法既可以将高频干扰钳位，又可以以较低成本实现模型融合的效果。在测试过程中，将输入校正为为$1-P(d)$倍，使得神经网络传输的数据均值不变。DropOut结构如图7所示：
+
+\begin{center}
+	\includegraphics[scale=0.4, trim=0 0 0 0]{figs/dropout}\\
+	\label{fig7}
+	\figcaption{DropOut结构示意图}
+\end{center}
+
+\subsection{降噪自编码}
+
+\subsection{实验与结果分析}
+
 \section{Conclusion}
 
 本文提出的AutoencoderSoftmax深度学习网络能够很好的在繁冗的特征向量数据集中提取出有效特征并将输入数据的维数进行无损压缩这样大大降低了网络的运算量。在非均衡分类问题中，传统的BP神经网络对于故障的辨识效果并不好，而且收敛速度较慢、容易陷入局部极小值，虽然采用了``成批处理''的方法收敛速度加快，但是辨识效果没有明显提高。相反，AutoencoderSoftmax深度学习网络尤其针对非传统分类问题，其收敛速度和辨识效果都要好于传统的BP网络。AutoencoderSoftmax深度学习网络在本文故障诊断问题中对于预测有故障的正确率为
@@ -339,309 +355,8 @@ softmax分类器网络，将前面训练好的网络保存下来的权重和阈�
 
 
 
-\newpage
-\end{multicols}
-\tableofcontents
-\newpage
-\begin{multicols}{2}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%markend
-
-\section{应用环境}
-应用如下的各种应用环境,定理、引理等自动生成,并按顺序生成编号.
-
-% \begin{Thm}
-% 	应用这个环境,定理编号将自动生成.
-% \end{Thm}
-
-% \begin{Site}
-% 	应用这个环境,引理编号将自动生成.
-% \end{Site}
-
-% \begin{Cor}
-% 	应用这个环境,推论编号将自动生成.
-% \end{Cor}
-
-% \begin{Def}
-% 	应用这个环境,定义编号将自动生成.
-% \end{Def}
-
-% \begin{Sup}
-% 	应用这个环境,假设编号将自动生成.
-% \end{Sup}
-
-% \begin{Exa}
-% 	应用这个环境,例子编号将自动生成.
-% \end{Exa}
-
-% \begin{Stu}
-% 	应用这个环境,情况编号将自动生成.
-% \end{Stu}
-
-% \begin{Exp}
-% 	应用这个环境,实验编号将自动生成.
-% \end{Exp}
-
-% \begin{Sim}
-% 	应用这个环境,仿真编号将自动生成.
-% \end{Sim}
-
-% \begin{Alg}
-% 	应用这个环境,算法编号将自动生成.
-% \end{Alg}
-
-% \begin{Prop}
-% 	应用这个环境,命题编号将自动生成.
-% \end{Prop}
-
-% \begin{Rem}
-% 	应用这个环境,注编号将自动生成.
-% \end{Rem}
-
-证明的排版方式如下:
-
-\textbf{证明}\quad 应用$\cdots$
-
-证明成立. {\Large$\square$}
-
-算法的步骤可以按如下排版.
-
-1)\,大段落的内容:
-
-\textbf{Step\,1}\quad
-首先,假设$\cdots$.
-
-\textbf{Step\,2}\quad
-其次,证明$\cdots$.
-
-\textbf{Step\,3}\quad
-最后,得到$\cdots$.
-
-2)\,小段落的内容:
-
-Step\,1: $\cdots$;
-
-Step\,2: $\cdots$;
-
-Step\,3: $\cdots$.
-
-
-\section{公式的例子}
-\subsection{公式的应用环境}
-公式请用环境\\
-\verb|\begin{align}...\end{align}|
-%有公式号
-或者\\
-\verb|\begin{align*}...\end{align*}|%没有公式号
-\subsection{几个实例}
-
-\subsubsection{公式分行的例子}
-公式在符号后断开.
-\begin{align}
-{\Arrowvert x^{(1)}_{k+1}-x^{(1)}_k\Arrowvert}_\lambda\leqslant \;&
-\frac{1}{1-h_1(i)}\Arrowvert x^{(1)}_{k+1}(0)-x^{(1)}_k(0)\Arrowvert+\notag\\
-&\frac{h_2(i)}{1-h_1(i)}{\Arrowvert
-	e^{(1)}_k\Arrowvert}_\lambda+\rho(Q).
-\end{align}
-
-
-\subsubsection{矩阵的例子}
-1)\,矩阵中元素居中对齐;
-\begin{align}
-\left[\begin{array}{cccc}
-a_{11}& a_{12}&\dots &a_{1n}\\
-a_{21}& a_{22}&\dots &a_{2n}\\
-\vdots&\vdots& \ddots   &\vdots\\
-a_{n1}& a_{n2}&\dots &a_{nn}
-\end{array}\right].\end{align}
-
-2)\,两个公式左边对齐.
-\begin{align}
-&A_1=\left[\begin{array}{cc} 1& -2\\-2 &4
-\end{array}\right],\\
-&A_2=\left[\begin{array}{ccc} 1.1 &-2.7&-22.4\\-2.3 &4.6 &12.7
-\end{array}\right].
-\end{align}
-
-
-\subsubsection{求最优值的例子}
-只有一个公式号的情况，公式号放在最后;各约束条件左对齐.
-\begin{center}
-
-\begin{align}
-&\min~\alpha\sum\limits_{i=1}^n\xi_{i}T_{i}+\beta \sum\limits_{l=1}^m \varphi_{l} \max(\chi_{l},~0).\notag\\
-&{\rm{~s.t.~}}T_{i}=\max(0,C_i-D_i),~\forall~i;\notag\\
-&~~~~~~~~c_{i \delta k}-s_{i \delta k}=t_{i \delta k},~\forall~i,\delta,k;\notag\\
-&~~~~~~~~s_{i 2 k}\geqslant c_{i 1 }+e_i,~\forall~i,k;\notag\\
-&~~~~~~~~c_{j \delta' k'}-c_{i \delta k}+M(1-X_{i \delta k j\delta'k'})\geqslant t_{j \delta' k'},\notag\\
-&~~~~~~~~~~~~~~~~~~~~~~~~~~\forall~i,j,\delta,\delta',k,k';\notag\\
-&~~~~~~~~c_{i \delta k}-c_{j \delta' k'}+M X_{i \delta k j\delta'k'}\geqslant t_{i \delta k},\notag\\
-&~~~~~~~~~~~~~~~~~~~~~~~~~~\forall~i,j,\delta,\delta',k,k';\notag\\
-&~~~~~~~~|\min(\chi_{l},0)|\leqslant b_l,~\forall~ l;\notag\\
-&~~~~~~~~\sum\limits_{l=1}^{l'-1} (b_{l}+\chi_{l})< \varepsilon_{\pi_{i \delta k}}\leqslant  \sum\limits_{l=1}^{l'} (b_{l}+\chi_{l}),~\pi_{i \delta k}=l;\notag\\
-&~~~~~~~~X_{i \delta k j\delta'k'} \in {0,1},~\forall~ i,j,\delta,\delta',k,k'.
-\end{align}
-\end{center}
-
-
-\subsubsection{带有大括号的例子}\vspace{-15pt}
-\begin{align}
-\left\{\begin{aligned}
-&\dot{x}(t)=A_{i}x_{t}(0)+A_{i1}x_{t}(-r);\\
-&y(t)=C_{i}x_{t}(0),t\geqslant t_{0}, i\in\{1, 2\}.
-\end{aligned}\right.
-\end{align}
-
-
-\subsection{调整公式字体大小的特例}
-
-用命令 \textbackslash displaystyle  可以调整在文字中过小的公式.\;$f(z)\thickapprox{\displaystyle\frac{1+\frac{1}{2}z+z^2+\frac{1}{2}z^3}{1-\frac{1}{2}z+z^2}}.$
-类似前面这样的例子.
-
-用命令 \textbackslash textstyle 可以调整公式中过大的情况.\;如下:
-\begin{align}
-&{\bm z}^{\rm T}(t)\{A_q^{\rm T}[P(t)+I]A_q-[P(t)+I]\}{\bm z}(t)+ \notag\\
-&{\textstyle\bigcup\limits_{i=1}^m}\varint\nolimits_{t-\tau_i}^t{\bm
-	z}^{\rm T}(s)\{A_q^{\rm T}A_q-I\}{\bm z}(s){\rm d}s\leqslant \notag\\
-&{\bm z}^{\rm T}(t)\{A_q^{\rm T}[P(t)-I]A_q-[P(t)-I]\}{\bm z}(t)+ \notag\\
-&{\textstyle\bigcup\limits_{i=1}^m}\varint\nolimits_{t-\tau_i}^t{\bm
-	z}^{\rm T}(s)\{A_q^{\rm T}A_q-I\}{\bm z}(s){\rm d}s\leqslant 0.
-\end{align}
-
-\section{插~~~~~~图}
-
-插图的格式为.eps,并利用下面的环境插入.图形的位置由命令
-中“trim=0 0 0 0”来控制,可以通过修正其中的4个参数来移动图形的位置.
-所给出的4个数字分别表示从图形的左边缘、下边缘、右边缘、上边缘被截去的值,
-正数表示从边缘截去的大小, 而负数表示从边缘加上的大小.\;本刊为黑白出版，不同颜色的线条不易区分,请画成不同样式的线条.
-
-1)\,框图必须有横纵坐标变量,有单位的变量提供单位,如图1所示.
-\begin{center}
-	\includegraphics[scale=1,trim=0 0 0 0]{template-1}\\
-	\label{Fig1}
-	\figcaption{图形标题1}
-\end{center}
-
-2)\,流程图尽量简洁,步骤清楚,如图2所示.\vspace{10pt}
-\begin{center}
-	\includegraphics[scale=1,trim=0 0 0 0]{template-2}\\
-	\label{Fig1}
-	\figcaption{图形标题2}
-\end{center}
-
-3)\,图中有若干分图的必须有分图名,如图3所示.
-\begin{center}
-	\includegraphics[scale=1,trim=0 0 0 0]{template-3}\\
-	\label{Fig1}
-	\figcaption{图形标题3}
-\end{center}
-
-
-
-\section{表~~~~~~格}
-表格:表格结构应简洁、明确,尽量采用三线表(即:表格中没有竖线,只有三条横线(特殊情形除外),表名在表格的正上方.\;表中参量应标明单位.\;过长的表格可以通栏.
-
-\begin{center}
-	\tabcaption{二进制属性列$C_{i}$}
-	\label{tab:1}
-	\renewcommand\tabcolsep{10pt}
-	\begin{tabular}{ccc||ccc}\toprule
-		\multirow{2}{*}[-2pt]{$N$} &$C_1$ &$C_2$
-		& \multirow{2}{*}[-2pt]{$N$} &$C_1$ &$C_2$ \\
-		&$a$  &$b$     &    &$a$  &$b$  \\\hhline{---||---}
-		1 & 1 & 0& $6$  & 1 & 1 \\
-		2 & 1 & 0 &8 & 1 & 1 \\
-		3 & 0 & 1 &9 & 1 & 1 \\
-     	4 & 1 & 1 &10& 0 & 1 \\
-		5 & 1 & 1 &11 & 0 & 1 \\
-		6 & 1 & 1 &12& 0 & 1 \\
-	    7 & 1 & 1 &13 & 0 & 1 \\
-		\bottomrule
-\end{tabular}\end{center}
-
-\end{multicols}
-\begin{center}
-	\tabcaption{班组重构前后成本对比}
-	\label{tab:1}
-	\renewcommand\tabcolsep{10.6pt}%调整表格长度
-	\begin{tabular}
-{ccccccccc}\toprule
-		%	\multirow{2}{1cm}[-2pt]{变量}......."{1cm}"代表这一栏目需要的长度；"[-2pt]"是为了让变量居中
-		\multirow{2}{*}[-2pt]{$n$}&\multirow{2}{*}[-2pt]{$\alpha$} &\multirow{2}{*}[-2pt]{$\beta$}&\multicolumn{2}{c}{$f=1.5$} &\multirow{2}{*}[-2pt]{${\rm{Gap}}\%$}&\multicolumn{2}{c}{\multirow{1}{*}{$f=2$}} &\multirow{2}{*}[-2pt]{${\rm{Gap}}\%$}\\
-		\cmidrule(lr){4-5}\cmidrule(lr){7-8}
-		&&&重构&不重构&&重构&不重构\\\midrule
-		&0.8&0.2&2\,140.6&4\,345.2&50.7&392.5&988.1&60.3\\
-		$n=4$&0.5&0.5&1\,685.4&2\,717.0&38.0&143.1&215.3&33.5\\
-		&0.2&0.8&944.5&1\,148.7&17.8&133.5&170.3&21.6\\\midrule
-		&0.8&0.2&8\,865.7&16\,936.5&47.7&4\,949.9&10\,237.0&51.7 \\
-		$n=6$&0.5&0.5&6\,264.6&10\,323.1&39.3&3\,232.4&6\,574.7&50.8\\
-		&0.2&0.8&3\,110.8&4\,092.7&24.0&1\,943.7&2\,676.7&20.0\\
-		\bottomrule
-\end{tabular}\end{center}
-\begin{multicols}{2}
-
-\section{参考文献}
-文章中的参考文献的序号应该按正文中出现的先后顺序编排(例如:因此这一控制方法已在控制理论领域引起了广泛的关注,其应用不仅
-限于机器人控制领域\textsuperscript{[1-2]},而且在非线性系统的鲁棒
-控制上也有了较大的发展\textsuperscript{[3-6]}.\;此外,在离散系统、分布参数系统上有了相应的应用\textsuperscript{[7-9]}.\;这一控制方法正逐步形成控制理论领域中的一个新方向,具体可以参见文献\textsuperscript{[10]}).\;同一处引用多篇文献,多篇文献置于一个方括号中;若多篇文献中没有连续的号,则各篇文献号之间用逗号;若多篇文献中即有不连续的,又有连续的号,则不连续的号之间用逗号,连续号之间用短连线,如[1,3-5].\;各类型参考文献的格式如下.
-
-1)\,期刊文章:
-[序号] 作者.\;文献题名[J].\;刊名,年,卷(期):起止页码.
-
-
-2)\,图书:
-[序号] 作者.\;文献题名[M].\;出版地:出版者,出版年:起止页码.
-
-3)\,论文集:
-[序号] 作者.\;文献题名[C].\;论文集名.\;出版地(指城市):出版者(或会议地点), 出版年:起止页码.
-
-4)\,学位论文和学术报告:
-[序号] 作者.\;文献题名[D或R].\;出版地(城市):出版者(单位),(出版)年份:起止页码.
-
-5)\,国家标准:
-[序号] 标准编号,标准名称[S].
-
-6)\,专利:
-[序号] 专利所有者.\;专利题名[P].\;国别:专利号.\;公告日期.
-
-7)\,电子文档:
-[序号] 主要责任者.\;题名[文献类型标志/文献载体标志].\;出版地:出版者, 出版年(更新或修改日期)[引用日期].\;获取和访问路径.
-
-8)\,各种未定义类型的文献: [序号] 主要责任者.\;文献题名[Z].\;出版地(城市):出版者(单位),(出版)年份.
-
-以上非英文文献者均需译成英文附在其后.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  参考文献
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{thebibliography}{99}
   %段落之间的竖直距离
@@ -679,10 +394,15 @@ a_{n1}& a_{n2}&\dots &a_{nn}
 
 
 \bibliographystyle{bib/gbt7714-2005}
-~\\\\\\测试\TeX \LaTeX \LaTeXe \cite{srivastava2014dropout, srivastava214dropout, srivastava2014ropout}\cite{srivastava2014ropout}\cite{srivastava214dropout}
 \bibliography{bib/reference.bib}
 
 
 \editor{X~~~~X}
 \end{multicols}
+
+\newpage
+\tableofcontents
+
+
+
 \end{document}
