@@ -171,7 +171,7 @@ figures respectively. The residuals deal with references, acknowledges, etc.}
 目前应用较多前馈型网络的是BP网络，其学习速度快，逼近能力和分类能力强，本文使用BP神经网络来对磨矿中的故障进行诊断，诊断系统功能结构见图2。
 
 \begin{center}
-	\includegraphics[scale=0.44, trim=0 0 0 0]{figs/procedure}
+	\includegraphics[scale=0.12, trim=0 0 0 0]{figs/procedure}
 	\label{fig2}
 	\figcaption{磨矿神经网络故障诊断功能示意图}
 \end{center}
@@ -254,7 +254,7 @@ softmax分类器网络。该网络的隐藏层的输出值正好就是类似池�
 3所示。
 
 \begin{center}
-	\includegraphics[scale=0.45, trim=0 0 0 0]{figs/autoencoder_softmax}\\
+	\includegraphics[scale=0.12, trim=0 0 0 0]{figs/autoencoder_softmax}\\
 	\label{fig4}
 	\figcaption{传统自动编码深度学习网络架构}
 \end{center}
@@ -337,12 +337,20 @@ softmax分类器网络，将前面训练好的网络保存下来的权重和阈�
 DropOut是一种通用的训练神经网络并能明显降低过拟合的方法。在训练过程中，将神经网络中的神经元按照一定概率$P(d)$丢弃，训练这些稀疏的模型，并去掉全职惩罚项，将其替换为限制权值的上限。因为噪声通常表现为高频干扰，用这种方法既可以将高频干扰钳位，又可以以较低成本实现模型融合的效果。在测试过程中，将输入校正为为$1-P(d)$倍，使得神经网络传输的数据均值不变。DropOut结构如图7所示：
 
 \begin{center}
-	\includegraphics[scale=0.4, trim=0 0 0 0]{figs/dropout}\\
+	\includegraphics[scale=0.16, trim=0 0 0 0]{figs/dropout}\\
 	\label{fig7}
 	\figcaption{DropOut结构示意图}
 \end{center}
 
 \subsection{降噪自编码}
+降噪自编码通过将输入数据加入随机干扰，或将输入数据的某些维度随机
+
+
+\begin{center}
+	\includegraphics[scale=0.16, trim=0 0 0 0]{figs/denoised_autoencoder}\\
+	\label{fig8}
+	\figcaption{降噪自编码结构示意图}
+\end{center}
 
 \subsection{实验与结果分析}
 
@@ -356,53 +364,45 @@ DropOut是一种通用的训练神经网络并能明显降低过拟合的方法�
 
 
 
-
-
-\begin{thebibliography}{99}
-  %段落之间的竖直距离
-%1
-%{\renewcommand{\baselinestretch}{1.02}\selectfont
-\addtolength{\itemsep}{-0.7em}
-\bibitem[1]{1}刘于之,李木国,杜海.\;具有时延和丢包的NCS鲁棒 $H_{\infty}$控制[J].\;控制与决策, 2014, 29(3): 517-522.\\
-(Liu Y Z, Li M G, Du H. Robust $H_{\infty}$ control of NCS with delay and packet dropout[J]. Control and Decision, 2014, 29(3): 517-522.)
-%2
-\bibitem[2]{2}Zhu X L, Yue D. Stability of sampled-data systems with application to networked control systems[C]. Proc of the 32nd Chinese Control Conf. Xi'an: IEEE, 2013: 6572-6577.
-%3
-\bibitem[3]{3}Zhang C K, Jiang L, He Y, et al. Stability analysis for control systems with aperiodically sampled data using an augmented Lyapunov functional method[J]. IET Control Theory and Applications, 2013, 7(9): 1219-1226.
-%4
-\bibitem[4]{4}Seuret A, Briat C, Gouaisbaut F. Stability analysis of asynchronous sampled-data systems with discrete-time constant input delay[C]. Proc of the 53rd IEEE Conf on Decision and Control. Los Angeles: IEEE, 2014: 4342-4347.
-%5
-\bibitem[5]{5}Fujioka H. A discrete-time approach to stability analysis of systems with aperiodic sample-and-hold devices[J]. IEEE Trans on Automatic Control, 2009, 54(10): 2440-2445.
-%6
-\bibitem[6]{6}Naghshtabrizi P, Hespanha J P, Teel A R. Exponential stability of impulsive systems with application to uncertain sampled-data systems[J].  Systems \&  Control Letters, 2008, 57(5): 378-385.
-%7
-\bibitem[7]{7}Fridman E. A refined input delay approach to sampled-data control[J].  Automatica, 2010, 46(2): 421-427.
-%8
-\bibitem[8]{8}Liu K, Fridman E. Wirtinger's inequality and Lyapunov-based sampled-data stabilization[J].  Automatica, 2012, 48(1): 102-108.
-%9
-\bibitem[9]{9}Shao H Y, Han Q L, Zhang Z Q, et al. Sampling-interval-dependent stability for sampled-data systems with state quantization[J].  Int J of Robust Nonlinear Control, 2014, 24(17): 2995-3008.
-%10
-\bibitem[10]{10}Shao H Y, Lam J, Feng Z G. Sampling-interval-dependent stability for linear sampled-data systems with non-uniform sampling[J]. Int J of Systems Science, 2016, 47(12): 2893-2900.
-%11
-\bibitem[11]{11}Seuret A. A novel stability analysis of linear systems under asynchronous samplings[J]. Automatica, 2012, 48(1): 177-182.
-%12
-\bibitem[12]{12}Seuret A, Gouaisbaut F. Wirtinger-based integral\linebreak     inequality: Application to time-delay systems[J]. Automatica, 2013, 49(9): 2860-2866.
-%13
-\bibitem[13]{13}Gu K. An integral inequality in the stability problem of time-delay systems[C]. Proc of the 39th IEEE Conf on Decision and Control. Sydney: IEEE, 2000: 2805-2810.
-
-\end{thebibliography}\vspace{-20pt}
-
-
 \bibliographystyle{bib/gbt7714-2005}
 \bibliography{bib/reference.bib}
-
-
 \editor{X~~~~X}
 \end{multicols}
-
-\newpage
-\tableofcontents
-
-
-
 \end{document}
+
+
+% \begin{thebibliography}{99}
+%   %段落之间的竖直距离
+% %1
+% %{\renewcommand{\baselinestretch}{1.02}\selectfont
+% \addtolength{\itemsep}{-0.7em}
+% \bibitem[1]{1}刘于之,李木国,杜海.\;具有时延和丢包的NCS鲁棒 $H_{\infty}$控制[J].\;控制与决策, 2014, 29(3): 517-522.\\
+% (Liu Y Z, Li M G, Du H. Robust $H_{\infty}$ control of NCS with delay and packet dropout[J]. Control and Decision, 2014, 29(3): 517-522.)
+% %2
+% \bibitem[2]{2}Zhu X L, Yue D. Stability of sampled-data systems with application to networked control systems[C]. Proc of the 32nd Chinese Control Conf. Xi'an: IEEE, 2013: 6572-6577.
+% %3
+% \bibitem[3]{3}Zhang C K, Jiang L, He Y, et al. Stability analysis for control systems with aperiodically sampled data using an augmented Lyapunov functional method[J]. IET Control Theory and Applications, 2013, 7(9): 1219-1226.
+% %4
+% \bibitem[4]{4}Seuret A, Briat C, Gouaisbaut F. Stability analysis of asynchronous sampled-data systems with discrete-time constant input delay[C]. Proc of the 53rd IEEE Conf on Decision and Control. Los Angeles: IEEE, 2014: 4342-4347.
+% %5
+% \bibitem[5]{5}Fujioka H. A discrete-time approach to stability analysis of systems with aperiodic sample-and-hold devices[J]. IEEE Trans on Automatic Control, 2009, 54(10): 2440-2445.
+% %6
+% \bibitem[6]{6}Naghshtabrizi P, Hespanha J P, Teel A R. Exponential stability of impulsive systems with application to uncertain sampled-data systems[J].  Systems \&  Control Letters, 2008, 57(5): 378-385.
+% %7
+% \bibitem[7]{7}Fridman E. A refined input delay approach to sampled-data control[J].  Automatica, 2010, 46(2): 421-427.
+% %8
+% \bibitem[8]{8}Liu K, Fridman E. Wirtinger's inequality and Lyapunov-based sampled-data stabilization[J].  Automatica, 2012, 48(1): 102-108.
+% %9
+% \bibitem[9]{9}Shao H Y, Han Q L, Zhang Z Q, et al. Sampling-interval-dependent stability for sampled-data systems with state quantization[J].  Int J of Robust Nonlinear Control, 2014, 24(17): 2995-3008.
+% %10
+% \bibitem[10]{10}Shao H Y, Lam J, Feng Z G. Sampling-interval-dependent stability for linear sampled-data systems with non-uniform sampling[J]. Int J of Systems Science, 2016, 47(12): 2893-2900.
+% %11
+% \bibitem[11]{11}Seuret A. A novel stability analysis of linear systems under asynchronous samplings[J]. Automatica, 2012, 48(1): 177-182.
+% %12
+% \bibitem[12]{12}Seuret A, Gouaisbaut F. Wirtinger-based integral\linebreak     inequality: Application to time-delay systems[J]. Automatica, 2013, 49(9): 2860-2866.
+% %13
+% \bibitem[13]{13}Gu K. An integral inequality in the stability problem of time-delay systems[C]. Proc of the 39th IEEE Conf on Decision and Control. Sydney: IEEE, 2000: 2805-2810.
+
+% \end{thebibliography}\vspace{-20pt}
+
+

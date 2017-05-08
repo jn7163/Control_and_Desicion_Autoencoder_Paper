@@ -1,4 +1,6 @@
 digraph autoencoder{
+    resolution=480;
+    dpi = 320;
     node[style="solid", shape=circle, label=""]
     splines=line
     nodesep=.1

@@ -1,4 +1,6 @@
 digraph procedure{
+    resolution=480;
+    dpi = 320;
     //rankdir="LR"
     node[shape="box"]
     splines=ortho
