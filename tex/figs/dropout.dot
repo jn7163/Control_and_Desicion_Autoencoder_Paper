@@ -5,6 +5,7 @@ digraph autoencoder{
     splines=line
     nodesep=.1
     rankdir="LR"
+    fontname=SimHei
 
     subgraph cluster_encoder{
         color=white;

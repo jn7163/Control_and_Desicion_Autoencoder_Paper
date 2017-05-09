@@ -1,4 +1,5 @@
 digraph autoencoder{
+    fontname=SimHei
     resolution=480;
     dpi = 320;
     node[style="solid", shape=circle, label=""]
