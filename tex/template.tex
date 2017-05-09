@@ -325,7 +325,7 @@ S_3=\frac{TN}{TN+FN}
 DropOut是一种通用的训练神经网络并能明显降低过拟合的方法。在训练过程中，将神经网络中的神经元按照一定概率$P(d)$丢弃，训练这些稀疏的模型，并去掉全职惩罚项，将其替换为限制权值的上限。因为噪声通常表现为高频干扰，用这种方法既可以将高频干扰钳位，又可以以较低成本实现模型融合的效果。在测试过程中，将输入校正为为$1-P(d)$倍，使得神经网络传输的数据均值不变。DropOut结构如图7所示。
 
 \begin{center}
-	\includegraphics[scale=0.14, trim=0 0 0 0]{figs/a}\\
+	\includegraphics[scale=0.14, trim=0 0 0 0]{figs/dropout}\\
 	\label{fig7}
 	\figcaption{DropOut结构示意图}
 \end{center}
@@ -335,7 +335,7 @@ DropOut是一种通用的训练神经网络并能明显降低过拟合的方法�
 
 
 \begin{center}
-	\includegraphics[scale=0.14, trim=0 0 0 0]{figs/b}\\
+	\includegraphics[scale=0.14, trim=0 0 0 0]{figs/denoised_autoencoder}\\
 	\label{fig8}
 	\figcaption{降噪自编码结构示意图}
 \end{center}
