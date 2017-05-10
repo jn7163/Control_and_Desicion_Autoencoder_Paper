@@ -157,7 +157,7 @@ figures respectively. The residuals deal with references, acknowledges, etc.}
 
 由图表可以看出，故障种类共分为进料端矿箱漏矿、旋流器穿孔、气缸故障等8类故障，其中的几类还有较强的相关性，比较难以辨识。通过分析数据，建立特征向量和目标之间的映射关系时发现：1024组特征向量对应的标签中有877类为无故障，147类为有故障，为严重的不均衡分类情况。这里我们选择了其中的两维特征进行分析如图1。
 \begin{center}
-	\includegraphics[scale=0.4, trim=0 0 0 0]{figs/data_features}\\
+	\includegraphics[scale=0.7, trim=0 0 0 0]{figs/data_features}\\
 	\label{fig1}
 	\figcaption{第0.1维特征分类图}
 \end{center}
@@ -239,7 +239,7 @@ S_3=\frac{TN}{TN+FN}
 		\bottomrule
 \end{tabular}\end{center}
 
-通过实验结果可以计算出不作任何特征变换的BP神经网络，神经元网络激活函数使用Sigmoid函数，节点大小为$24\rightarrow100\rightarrow8$，,对于预测有故障的正确率为46.7\%，无故障的正确率为69.6\%，错误率为38.7\%。可以看出，如果对于输入的特征向理想不作任何特征变化就输入到神经网络中，网络在有无故障的辨识正确率方面表现都比较差，并且错误率较高。这也进一步说明传统BP神经网络不适用高维输入的非均衡分类问题。
+通过实验结果可以计算出不作任何特征变换的BP神经网络，神经元网络激活函数使用Sigmoid函数，节点大小为$24\rightarrow100\rightarrow8$，对于预测有故障的正确率为46.7\%，无故障的正确率为69.6\%，错误率为38.7\%。可以看出，如果对于输入的特征向理想不作任何特征变化就输入到神经网络中，网络在有无故障的辨识正确率方面表现都比较差，并且错误率较高。这也进一步说明传统BP神经网络不适用高维输入的非均衡分类问题。
 
 \section{原始自动编码器}
 
@@ -267,17 +267,17 @@ S_3=\frac{TN}{TN+FN}
 在24维特征向量输入网络之前，利用Autoencoder自编码网络对其进行特征提取。自编码网络也可以看作一种神经网络，其目标函数就是使输出尽可能的与输入相等，这样既可以在隐含层实现无损压缩。为了验证自编码网络的性能我们选取其中八维特征观察还原效果如图4所示。
 
 \begin{center}
-	\includegraphics[scale=0.4, trim=0 0 0 0]{figs/autoencoder_restore}\\
+	\includegraphics[scale=0.7, trim=0 0 0 0]{figs/autoencoder_restore}\\
 	\label{fig5}
 	\figcaption{自编码还原效果图}
 \end{center}
 
-由以上图可以看出，编码还原后绝大多数的特征点还是与编码前的特征点比较接近，因此可以看出，自编码网络经过多步训练后能够较好的复现输入也就是说隐含层提取到的特征包含了输入特征的大部分信息，即可以用隐含层的输出的更加明显的特征向量来代替原网络的高维输入向量。
+图4中，红色代表原始数据，蓝色代表自动编码器还原回来的数据。由该图可以看出，编码还原后绝大多数的特征点还是与编码前的特征点比较接近，因此，自编码网络经过多步训练后能够较好的复现输入也就是说隐含层提取到的特征包含了输入特征的大部分信息，即可以用隐含层的输出的更加明显的特征向量来代替原网络的高维输入向量。
 
 训练完成后，获得编码后的隐藏层输出的特征如图5所示：
 
 \begin{center}
-	\includegraphics[scale=0.4, trim=0 0 0 0]{figs/autoencoder_encoded_features}\\
+	\includegraphics[scale=0.7, trim=0 0 0 0]{figs/autoencoder_encoded_features}\\
 	\label{fig6}
 	\figcaption{自编码网络输出特征}
 \end{center}
@@ -288,7 +288,7 @@ S_3=\frac{TN}{TN+FN}
 
 \begin{center}
 	\tabcaption{A-BP实验结果}
-	\label{tab:3}
+	\label{tab:4}
 	\begin{tabular} {cccc}\toprule
 		\multirow{2}{*}[-2pt]{}&\multirow{2}{*}[-2pt]{}&\multicolumn{2}{c}{预测结果}\\
 		\cmidrule(lr){3-4}
@@ -304,7 +304,7 @@ S_3=\frac{TN}{TN+FN}
 
 \begin{center}
 	\tabcaption{A-S实验结果}
-	\label{tab:3}
+	\label{tab:5}
 	\begin{tabular} {cccc}\toprule
 		\multirow{2}{*}[-2pt]{}&\multirow{2}{*}[-2pt]{}&\multicolumn{2}{c}{预测结果}\\
 		\cmidrule(lr){3-4}
@@ -348,7 +348,7 @@ DropOut是一种通用的训练神经网络并能明显降低过拟合的方法�
 
 \begin{center}
 	\tabcaption{DropOut自动编码器实验结果}
-	\label{tab:5}
+	\label{tab:6}
 	\begin{tabular} {cccc}\toprule
 		\multirow{2}{*}[-2pt]{}&\multirow{2}{*}[-2pt]{}&\multicolumn{2}{c}{预测结果}\\
 		\cmidrule(lr){3-4}
@@ -364,7 +364,7 @@ DropOut是一种通用的训练神经网络并能明显降低过拟合的方法�
 
 \begin{center}
 	\tabcaption{DropOut降噪自编码实验结果}
-	\label{tab:6}
+	\label{tab:7}
 	\begin{tabular} {cccc}\toprule
 		\multirow{2}{*}[-2pt]{}&\multirow{2}{*}[-2pt]{}&\multicolumn{2}{c}{预测结果}\\
 		\cmidrule(lr){3-4}
@@ -381,45 +381,11 @@ DropOut是一种通用的训练神经网络并能明显降低过拟合的方法�
 
 本文使用DropOut降噪自编码，在A-S深度学习网络的基础上，显著降低了分类错误率，达到工业界最先进的水平。这种方法避免了传统基于神经网络的方法容易陷入过拟合的困境，对数据进行深层特征提取，实现了数据降噪和提高路帮性，将为今后的非传统分类问题提供一个理论依据，并将在深度学习实现故障辨识领域产生深远意义。
 
+
+
+\addtolength{\itemsep}{-0.7em}
 \bibliographystyle{bib/gbt7714-2005}
 \bibliography{bib/reference.bib}
 \editor{X~~~~X}
 \end{multicols}
 \end{document}
-
-
-% \begin{thebibliography}{99}
-%   %段落之间的竖直距离
-% %1
-% %{\renewcommand{\baselinestretch}{1.02}\selectfont
-% \addtolength{\itemsep}{-0.7em}
-% \bibitem[1]{1}刘于之,李木国,杜海.\;具有时延和丢包的NCS鲁棒 $H_{\infty}$控制[J].\;控制与决策, 2014, 29(3): 517-522.\\
-% (Liu Y Z, Li M G, Du H. Robust $H_{\infty}$ control of NCS with delay and packet dropout[J]. Control and Decision, 2014, 29(3): 517-522.)
-% %2
-% \bibitem[2]{2}Zhu X L, Yue D. Stability of sampled-data systems with application to networked control systems[C]. Proc of the 32nd Chinese Control Conf. Xi'an: IEEE, 2013: 6572-6577.
-% %3
-% \bibitem[3]{3}Zhang C K, Jiang L, He Y, et al. Stability analysis for control systems with aperiodically sampled data using an augmented Lyapunov functional method[J]. IET Control Theory and Applications, 2013, 7(9): 1219-1226.
-% %4
-% \bibitem[4]{4}Seuret A, Briat C, Gouaisbaut F. Stability analysis of asynchronous sampled-data systems with discrete-time constant input delay[C]. Proc of the 53rd IEEE Conf on Decision and Control. Los Angeles: IEEE, 2014: 4342-4347.
-% %5
-% \bibitem[5]{5}Fujioka H. A discrete-time approach to stability analysis of systems with aperiodic sample-and-hold devices[J]. IEEE Trans on Automatic Control, 2009, 54(10): 2440-2445.
-% %6
-% \bibitem[6]{6}Naghshtabrizi P, Hespanha J P, Teel A R. Exponential stability of impulsive systems with application to uncertain sampled-data systems[J].  Systems \&  Control Letters, 2008, 57(5): 378-385.
-% %7
-% \bibitem[7]{7}Fridman E. A refined input delay approach to sampled-data control[J].  Automatica, 2010, 46(2): 421-427.
-% %8
-% \bibitem[8]{8}Liu K, Fridman E. Wirtinger's inequality and Lyapunov-based sampled-data stabilization[J].  Automatica, 2012, 48(1): 102-108.
-% %9
-% \bibitem[9]{9}Shao H Y, Han Q L, Zhang Z Q, et al. Sampling-interval-dependent stability for sampled-data systems with state quantization[J].  Int J of Robust Nonlinear Control, 2014, 24(17): 2995-3008.
-% %10
-% \bibitem[10]{10}Shao H Y, Lam J, Feng Z G. Sampling-interval-dependent stability for linear sampled-data systems with non-uniform sampling[J]. Int J of Systems Science, 2016, 47(12): 2893-2900.
-% %11
-% \bibitem[11]{11}Seuret A. A novel stability analysis of linear systems under asynchronous samplings[J]. Automatica, 2012, 48(1): 177-182.
-% %12
-% \bibitem[12]{12}Seuret A, Gouaisbaut F. Wirtinger-based integral\linebreak     inequality: Application to time-delay systems[J]. Automatica, 2013, 49(9): 2860-2866.
-% %13
-% \bibitem[13]{13}Gu K. An integral inequality in the stability problem of time-delay systems[C]. Proc of the 39th IEEE Conf on Decision and Control. Sydney: IEEE, 2000: 2805-2810.
-
-% \end{thebibliography}\vspace{-20pt}
-
-

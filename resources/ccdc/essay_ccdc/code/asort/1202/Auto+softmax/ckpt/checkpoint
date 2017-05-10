@@ -1,0 +1,6 @@
+model_checkpoint_path: "epoch_d4000_model_accuracy_0.810000"
+all_model_checkpoint_paths: "epoch_d3300_model_accuracy_0.790000"
+all_model_checkpoint_paths: "epoch_d3400_model_accuracy_0.790000"
+all_model_checkpoint_paths: "epoch_d3500_model_accuracy_0.790000"
+all_model_checkpoint_paths: "epoch_d3600_model_accuracy_0.810000"
+all_model_checkpoint_paths: "epoch_d4000_model_accuracy_0.810000"
