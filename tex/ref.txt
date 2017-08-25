@@ -1,0 +1,20 @@
+\bibitem[1]{1} 刘强, 柴天佑, 秦泗钊, 等. 基于数据和知识的工业过程监视及故障诊断综述[J]. 控制与决策, 2010 (6): 801-807.\\
+LIU Qiang, CHAI Tian-you, QIN S Joe, et al. Progress of data-driven and knowledge-driven process monitoring and fault diagnosis for industry process[J]. CONTROL AND DECISION, 2010 (6): 801-807.)
+
+\bibitem[2]{2} 李勇. 磨矿过程参数软测量与综合优化控制的研究[D]. 大连理工大学, 2006.\\
+(LI Yong. Research on the Parameters’Soft Sensing and Synthetic Optimizing Control of Grinding Process[D]. Dalian Universky of Technology. 2006.)
+
+\bibitem[3]{3} Darby M L, Nikolaou M, Jones J, et al. RTO: An overview and assessment of current practice[J]. Journal of Process Control, 2011, 21(6) : 874 – 884.
+
+\bibitem[4]{4} Garrido J, Vázquez F, Morilla F. An extended approach of inverted decoupling[J]. Journal of Process Control, 2011, 21(1) : 55 – 68.
+
+\bibitem[5]{5} Vincent P, Larochelle H, Lajoie I, et al. Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion[J]. Journal of Machine Learning Research, 2010, 11(Dec) : 3371 – 3408.
+
+\bibitem[6]{6} Srivastava N, Hinton G E, Krizhevsky A, et al. Dropout: a simple way to prevent neural networks from overfitting.[J]. Journal of Machine Learning Research, 2014, 15(1) : 1929 – 1958.
+
+\bibitem[7]{7} Hinton G E, Srivastava N, Krizhevsky A, et al. Improving neural networks by preventing co-adaptation of feature detectors[J]. arXiv preprint arXiv:1207.0580, 2012.
+
+\bibitem[8]{8} 石鑫, 朱永利, 宁晓光, 等. 基于深度自编码网络的电力变压器故障诊断 [J]. 电力自动化设备, 2016, 36(5) : 122 – 126.\\
+(SHI Xin, ZHU Yongli, NING Xiaoguang, et al. Transformer fault diagnosis based on deep auto-encoder network  [J]. Electric Power Automation Equipment, 2016, 36(5) : 122 – 126.)
+
+\end{thebibliography}\vspace{-20pt}
