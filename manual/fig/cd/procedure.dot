@@ -1,0 +1,28 @@
+digraph procedure{
+    resolution=480;
+    fontname=SimHei
+    dpi = 320;
+    //rankdir="LR"
+    node[shape="box"]
+    splines=ortho
+    //edge[style="straight"]
+    main[label="Neural Network Diagnosis"]
+    nnt[label="Neural \nNetwork \nDiagnosis"]
+    nnd[label="Neural \nNetwork \nDiagnosis"]
+    td[label="Train \nData"]
+    nt[label="Net \nTrain"]
+    nd[label="Net \nDiafnosis"]
+    wb[label="Weights \nBiases"]
+    fv[label="Feature \nvector"]
+    swb[label="Store \nWeights \nBiases"]
+    o[label="outputs"]
+
+    main -> {nnt nnd}
+    nnt -> nt -> swb
+    td -> nt
+    nnd -> wb
+    {wb, fv} -> nd
+    fv -> o
+    {rank=same; td nt nd wb fv}
+    {rank=same; swb o}
+}

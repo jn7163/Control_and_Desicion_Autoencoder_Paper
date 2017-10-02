@@ -1,0 +1,33 @@
+digraph autoencoder{
+    resolution=480;
+    fontname=SimHei
+    dpi = 320;
+    node[style="solid", shape=circle, label=""]
+    splines=line
+    nodesep=.1
+    rankdir="LR"
+
+    subgraph cluster_encoder{
+        color=white;
+        x1, x3, x4,  x6, x7
+        x2[label="0", color=red, fixedsize=true, fontsize=25, fontcolor=red]
+        x5[label="0", color=red, fixedsize=true, fontsize=25, fontcolor=red]
+        label = "编码器"
+    }
+
+    subgraph cluster_hidden{
+        color=white;
+        h1, h3, h5, h2, h4
+        label="隐藏层"
+    }
+
+    subgraph cluster_decoder{
+        color=white;
+        y1, y2, y3, y4, y5, y6, y7
+        label="解码器"
+}
+
+    {x1, x3, x4, x6, x7} -> {h1, h3, h5,h2, h4} -> {y1, y2, y3, y4, y5, y6, y7}
+    edge[color=red]
+    {x2, x5} -> {h1, h3, h5,h2, h4}
+}
