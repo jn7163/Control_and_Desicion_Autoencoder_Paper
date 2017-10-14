@@ -42,6 +42,7 @@ def plot_embedding(X, y, plot_title=None, unbalanced=True):
     if title is not None:
         title(plot_title)
 
+
 def tsne(data_test, data_label, title=None, unbalanced=True, method='tsne'):
     label_n = argmax(data_label, axis=1)
 
@@ -53,7 +54,6 @@ def tsne(data_test, data_label, title=None, unbalanced=True, method='tsne'):
     tsne_transformed = model.fit_transform(data_test, label_n)
 
     plot_embedding(tsne_transformed, label_n, title if title else 't-sne projection', unbalanced)
-
 
 
 def main():
